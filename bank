@@ -1,0 +1,117 @@
+This file was updated remotely or in another tab. To force a save, overwriting the last update, select Save from the File menu
+bank.ipynb
+bank.ipynb_
+ 
+import pandas as pd
+
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import LabelEncoder, OneHotEnc
+import pandas as pd
+​
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+​
+[ ]
+#loading data
+df=pd.read_csv('http://13.234.66.67/summer19/datasets/bank.csv')
+[ ]
+#top5 row
+df.info()
+
+[ ]
+features=df.iloc[:,3:13].values #removing data
+[ ]
+label=df.iloc[:,13].values
+[ ]
+countenc=LabelEncoder()
+[ ]
+features[0:,1]=countenc.fit_transform(features[0:,1])
+features[0:,1]=countenc.fit_transform(features[0:,1])
+[ ]
+features[0:,2]=countenc.fit_transform(features[0:,2])
+[ ]
+counthot=OneHotEncoder(categorical_features=[1])
+[ ]
+:,1:
+features=counthot.fit_transform(features).toarray()
+features1=features[:,1:]
+
+[ ]
+features1.shape
+features1.shape
+
+[ ]
+#training and testing
+from sklearn.model_selection import train_test_split
+[ ]
+​
+[ ]
+e=0.2)
+X,x,Y,y=train_test_split(features1,label,test_size=0.2)
+[ ]
+#feature scaling
+from sklearn.preprocessing import StandardScaler
+[ ]
+sc=StandardScaler()
+[ ]
+training data scale
+#training data scale
+X=sc.fit_transform(X)
+[ ]
+  # testing data transform
+x=sc.transform(x)  # testing data transform
+[ ]
+X
+X.shape
+
+[ ]
+#now we create ann model 
+[ ]
+d 
+import keras # this is the way of using tensorflow in background 
+
+[ ]
+offer extrnal model of ANN
+#keras ANN model libary import
+from keras.models import Sequential
+# this will offer extrnal model of ANN
+[ ]
+#filling data in each layer
+​
+from keras.layers import Dense
+#this will give the method to decide activartion function and number of nodes in each layer 
+#including inut,hidden and oupt layer
+[ ]
+# now we can design model
+model=Sequential()
+
+[ ]
+,
+ #now can web ad input layer
+model.add(Dense(6,input_shape=(11,),activation="relu"))
+#relu -- means rectifier activation function
+  
+[ ]
+puts after / input layer
+#adding one more hidden layer
+model.add(Dense(6,activation="relu"))
+#note we dont have to assign number of inputs after / input layer
+[ ]
+sigmoid
+#final layer adding 
+model.add(Dense(1,activation="sigmoid"))
+[ ]
+# compile 
+model.compile(optimizer='adam',loss='binary_crossentropy',metrics=['accuracy'])
+# optimizer -- weight adjust --stochitis g d (adam)
+
+[ ]
+#training data fit
+model.fit(X,Y,batch_size=2000,epochs=100)
+
+[ ]
+model.predict(x) # now predcting test data
+
+[ ]
+​
+This file was updated remotely or in another tab. To force a save, overwriting the last update, select Save from the File menu
