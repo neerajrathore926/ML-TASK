@@ -1,0 +1,44 @@
+import pandas as pd
+
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+
+[ ]
+
+#loading data
+df=pd.read_csv('http://13.234.66.67/summer19/datasets/bank.csv')
+
+[ ]
+#top5 row
+df.info()
+#top5 row
+df.info()
+
+[ ]
+features=df.iloc[:,3:13].values #removing data
+[ ]
+#experinece that we r going to use as input of training data 
+exp=df.iloc[:,0].values
+[ ]
+#actua salary
+sal=df.iloc[:,1].values
+[ ]
+#now we  can visulaize this exp and sal data
+plt.xlabel("experience")
+plt.ylabel("salary")
+plt.scatter(exp,sal)
+plt.show()
+
+[ ]
+#calling liner regression model
+from sklearn.linear_model import LinearRegression
+[ ]
+#model creation 
+reg=LinearRegression()
+[ ]
+#fititng experience and salary
+trained=reg.fit(exp,sal)
+
+
+
+
