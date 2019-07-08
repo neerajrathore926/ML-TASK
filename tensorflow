@@ -1,0 +1,57 @@
+import tensorflow as tf
+
+# to assign fix value in tensorflow we need to define constant 
+x=tf.constant(30)
+
+x1=tf.constant([3,5,66,88]) # multi value constant
+
+# type of x
+type(x)
+
+# y
+y=tf.constant(20)
+
+#equation
+z=x+y #tensor --- z equation compile and store and wait for resources 
+#cpu,gpu,tpu ---
+
+#we hv anothefr method to add the same 
+z1=tf.add(x,y)
+
+# now time for assignin resources to our equation 
+sess=tf.Session() # connect cpu,gpu,tpu
+
+#now we can run our quation
+output=sess.run(z)
+
+output
+
+#closing session
+sess.close()
+
+#we can perform same task in another way
+with tf.Session() as sess:
+  output1=sess.run(z)
+  tf.summary.FileWriter(sess.graph)
+
+output1
+
+# first placeholder 
+p1=tf.placeholder(tf.int32)
+
+#placeholfer2
+p2=tf.placeholder(tf.int32)
+
+#adding vlaues
+sum=tf.add(p1,p2)
+
+#general 
+sum1=p1+p2
+
+#time for creating session 
+with tf.Session() as sess:
+  output2=sess.run(sum1,{p1:[3,6],p2:[5,8]})
+
+output2
+
+                                                  
